@@ -8,18 +8,8 @@ public class Wish {
     private String pictureUrl;
     private String description;
 
-
-    public Wish(String name, double price, String url) {
+    public Wish(String name) {
         this.name = name;
-        this.price = price;
-        this.url = url;
-    }
-
-    public Wish(String name, double price, String url, String pictureUrl) {
-        this.name = name;
-        this.price = price;
-        this.url = url;
-        this.pictureUrl = pictureUrl;
     }
 
     public String getDescription() {

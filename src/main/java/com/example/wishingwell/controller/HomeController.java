@@ -1,5 +1,6 @@
 package com.example.wishingwell.controller;
 
+import com.example.wishingwell.model.Wish;
 import com.example.wishingwell.repository.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -29,9 +30,12 @@ public class HomeController {
   @PostMapping("/addwish")
     public String addWish(@RequestParam String name, @RequestParam double price, @RequestParam String url, @RequestParam
                           String pictureurl, @RequestParam String description){
-      repository.addWish(new Wish (name,price,url,pictureurl,description));
+      Wish wish = new Wish(name);
+      wish.setPrice(price);
+      wish.setUrl(url);
+      wish.setPictureUrl(pictureurl);
+      wish.setDescription(description);
+      repository.addWish(wish);
       return "redirect:/";
     }
   }
-
-}
