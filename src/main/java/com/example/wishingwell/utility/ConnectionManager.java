@@ -14,9 +14,9 @@ public class ConnectionManager {
                         System.getenv("spring.datasource.url"),
                         System.getenv("spring.datasource.username"),
                         System.getenv("spring.datasource.password"));
-                System.out.println("Forbundet");
+                System.out.println("SUCCESFULLY CONNECTED TO SERVER");
             } catch (Exception e) {
-                System.out.println("Fejl: " + e);
+                System.out.println("ERROR: " + e);
             }
         }
         return connection;
