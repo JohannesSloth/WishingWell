@@ -16,14 +16,14 @@ public class HomeController {
   WishRepository repository;
 
   @GetMapping("/")
-  public String index(){
+  public String index(HttpSession httpSession){
+    httpSession.setAttribute("wishlist",repository.getall());
     return "index";
   }
 
 
   @GetMapping("/addwish")
-  public String addwish(HttpSession httpSession){
-    httpSession.setAttribute("wishlist",repository.getall());
+  public String addwish(){
     return "/addwish";
   }
 
