@@ -4,21 +4,17 @@ import com.example.wishingwell.model.Wish;
 import com.example.wishingwell.utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 @Repository
 public class WishRepository {
-    private static Connection connection;
 
     public ArrayList<Wish> getall() {
         ArrayList<Wish> wishes = new ArrayList<>();
         String query = "SELECT * FROM wish";
         try {
-            PreparedStatement ps = connection.prepareStatement(query);
+            PreparedStatement ps = ConnectionManager.connectToSql().prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String name = rs.getString("name");
