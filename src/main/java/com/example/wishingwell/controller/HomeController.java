@@ -4,6 +4,7 @@ import com.example.wishingwell.model.Wish;
 import com.example.wishingwell.repository.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,8 +17,8 @@ public class HomeController {
   WishRepository repository;
 
   @GetMapping("/")
-  public String index(HttpSession httpSession){
-    httpSession.setAttribute("wishlist",repository.getall());
+  public String index(Model model){
+    model.addAttribute("wishlist",repository.getall());
     return "index";
   }
 

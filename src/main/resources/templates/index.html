@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>price</th>
+        <th>url</th>
+        <th>pictureurl</th>
+        <th>description</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="wishes : ${wishlist}">
+        <td th:text="${wishes.getName()}"></td>
+        <td th:text="${wishes.getPrice()}"></td>
+        <td th:text="${wishes.getUrl()}"></td>
+        <td th:text="${wishes.getPictureUrl()}"></td>
+        <td th:text="${wishes.getDescription()}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
