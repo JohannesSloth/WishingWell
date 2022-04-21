@@ -25,7 +25,6 @@ public class Wish {
     public String getDescription() {
         return description;
     }
-
     public void setDescription(String description) {
         this.description = description;
     }
@@ -33,7 +32,6 @@ public class Wish {
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -41,7 +39,6 @@ public class Wish {
     public double getPrice() {
         return price;
     }
-
     public void setPrice(double price) {
         this.price = price;
     }
@@ -49,7 +46,6 @@ public class Wish {
     public String getUrl() {
         return url;
     }
-
     public void setUrl(String url) {
         this.url = url;
     }
@@ -57,7 +53,6 @@ public class Wish {
     public String getPictureUrl() {
         return pictureUrl;
     }
-
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
     }
