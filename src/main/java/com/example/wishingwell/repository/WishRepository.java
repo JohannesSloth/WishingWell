@@ -4,15 +4,39 @@ import com.example.wishingwell.model.Wish;
 import com.example.wishingwell.utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Repository
 public class WishRepository {
+    private static Connection connection;
 
     public ArrayList<Wish> getall() {
         ArrayList<Wish> wishes = new ArrayList<>();
-
+        String query = "SELECT * FROM wish";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                String name = rs.getString("name");
+                double price = rs.getDouble("price");
+                String url = rs.getString("url");
+                String pictureurl = rs.getString("pictureurl");
+                String description = rs.getString("description");
+                Wish wish = new Wish(name);
+                wish.setPrice(price);
+                wish.setUrl(url);
+                wish.setPictureUrl(pictureurl);
+                wish.setDescription(description);
+                wishes.add(wish);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQL Error");
+        }
         return wishes;
     }
 
