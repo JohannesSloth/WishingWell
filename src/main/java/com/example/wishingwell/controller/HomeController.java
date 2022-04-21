@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
 
   WishRepository repository;
 
+  public HomeController(WishRepository wishRepository){
+    this.repository = wishRepository;
+  }
+
   @GetMapping("/")
   public String index(Model model){
     model.addAttribute("wishlist",repository.getall());
     return "index";
   }
-
 
   @GetMapping("/addwish")
   public String addwish(){
