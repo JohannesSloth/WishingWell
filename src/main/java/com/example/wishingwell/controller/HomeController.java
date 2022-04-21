@@ -11,4 +11,10 @@ public class HomeController {
     return "index";
   }
 
+  @GetMapping("/createwishlist")
+  public String createwishlist() {
+    return "createwishlist";
+  }
+
+
 }
