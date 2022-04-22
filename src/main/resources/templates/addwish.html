@@ -8,6 +8,36 @@
 </head>
 
 <body>
+<div class="container">
+    <h1>Add wish</h1>
+    <form action="addwish" method="post">
+        <div class="form-group w-25">
+            <div class="form-control">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Price</label>
+                    <input type="number" class="form-control" id="price" name="price" placeholder="200">
+                </div>
+                <div class="mb-3">
+                    <label for="url" class="form-label">Link (url)</label>
+                    <input type="text" class="form-control" id="url" name="url" placeholder="eg. www.wish.com">
+                </div>
+                <div class="mb-3">
+                    <label for="pictureurl" class="form-label">Picture link (url)</label>
+                    <input type="text" class="form-control" id="pictureurl" name="pictureurl" placeholder="eg. www.wish.com/picture.img">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description" placeholder="eg. I'd like it in blue">
+                </div>
+                <button type="submit" class="btn btn-success">Add wish</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

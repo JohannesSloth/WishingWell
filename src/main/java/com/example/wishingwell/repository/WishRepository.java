@@ -82,6 +82,36 @@ public class WishRepository {
         }
     }
 
-
-
+    public Wish findByID(int id){
+            Wish wish = new Wish();
+            //connect
+            String query = "SELECT name, price, url, pictureurl, description" +
+                "FROM pokemon where wish_id = ?";
+            try {
+                //preparestatement
+                PreparedStatement prepareStatement = ConnectionManager.connectToSql().prepareStatement(query);
+                //Set attributer
+                prepareStatement.setInt(1,id);
+                //execute
+                ResultSet resultSet = prepareStatement.executeQuery();
+                while (resultSet.next()){
+                    String name = resultSet.getString("name");
+                    double price = resultSet.getDouble("price");
+                    String url = resultSet.getString("url");
+                    String pictureurl = resultSet.getString("pictureurl");
+                    String description = resultSet.getString("description");
+                    wish = new Wish(name);
+                    wish.setId(id);
+                    wish.setPrice(price);
+                    wish.setUrl(url);
+                    wish.setPictureUrl(pictureurl);
+                    wish.setDescription(description);
+                }
+            }
+            catch (SQLException sqlException){
+                System.out.println("Error in deletion of pokemon");
+                sqlException.printStackTrace();
+            }
+            return wish;
+    }
 }

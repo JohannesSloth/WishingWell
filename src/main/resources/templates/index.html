@@ -33,6 +33,8 @@
         <td th:text="${wishes.getDescription()}"></td>
         <td>
             <a class="btn btn-danger" th:href="@{'/deletewish/' + ${wishes.getId()}}" role="button">Delete</a>
+            <span> | </span>
+            <a class="btn btn-primary btn-sm" th:href="@{'/update/' + ${wishes.getId()}}" role="button">Update</a>
         </td>
     </tr>
     </tbody>

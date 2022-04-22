@@ -7,6 +7,28 @@
     <title>Update</title>
 </head>
 <body>
+<form method="post">
+
+    <p>id: <span th:text="${wish.getId()}"></span></p>
+
+    <label for="name">name: </label>
+    <input id="name" name="name" type="text" th:value="${wish.getName()}">
+
+    <label for="speed">price: </label>
+    <input id="speed" name="speed" type="number" th:value="${wish.getPrice()}">
+
+    <label for="special_defence"> url: </label>
+    <input id="special_defence" name="special_defence" type="number" th:value="${wish.getUrl()}">
+
+    <label for="special_attack">picture url: </label>
+    <input id="special_attack" name="special_attack" type="number" th:value="${wish.getPictureUrl()}">
+
+    <label for="defence">description: </label>
+    <input id="defence" name="defence" type="number" th:value="${wish.getDescription()}">
+
+    <button style="margin-top: 5px" type="submit">Submit</button>
+
+</form>
 
 </body>
 </html>
