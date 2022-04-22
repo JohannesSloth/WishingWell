@@ -6,10 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class WishingWellApplication {
-
     public static void main(String[] args) {
-        ConnectionManager.connectToSql();
         SpringApplication.run(WishingWellApplication.class, args);
     }
-
 }

@@ -44,7 +44,7 @@ public class HomeController {
     }
 
     @GetMapping("/updatewish/{id}")
-    public String updateWish(@PathVariable int id) {
+    public String updateWish(@PathVariable("id") int id) {
         return "/updatewish";
     }
 
@@ -60,7 +60,7 @@ public class HomeController {
     }
 
     @GetMapping("/deletewish/{id}")
-    public String deleteWish(@PathVariable int id) {
+    public String deletewish(@PathVariable("id") int id) {
         repository.deleteWish(id);
         return "redirect:/";
     }
