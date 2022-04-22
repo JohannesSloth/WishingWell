@@ -17,12 +17,14 @@ public class WishRepository {
             PreparedStatement ps = ConnectionManager.connectToSql().prepareStatement(query);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
+                int id = rs.getInt("wish_id");
                 String name = rs.getString("name");
                 double price = rs.getDouble("price");
                 String url = rs.getString("url");
                 String pictureurl = rs.getString("pictureurl");
                 String description = rs.getString("description");
                 Wish wish = new Wish(name);
+                wish.setId(id);
                 wish.setPrice(price);
                 wish.setUrl(url);
                 wish.setPictureUrl(pictureurl);
@@ -49,7 +51,25 @@ public class WishRepository {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("ERROR: " + e);
+            System.out.println("ERROR 404: " + e);
         }
     }
+
+    public void updateWish(Wish wish) {
+        String query = "UPDATE wish SET name=?, price=?, url=?, pictureurl=?, description=? WHERE wish_id=?";
+        try {
+            PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
+            preparedStatement.setString(1, wish.getName());
+            preparedStatement.setDouble(2, wish.getPrice());
+            preparedStatement.setString(3, wish.getUrl());
+            preparedStatement.setString(4, wish.getPictureUrl());
+            preparedStatement.setString(5, wish.getDescription());
+            preparedStatement.executeUpdate();
+        } catch(Exception e) {
+            e.printStackTrace();
+            System.out.println("Failed to update wish. Contact customer service: " + e);
+        }
+    }
+
+
 }

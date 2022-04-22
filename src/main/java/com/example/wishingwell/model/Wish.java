@@ -2,6 +2,7 @@ package com.example.wishingwell.model;
 
 public class Wish {
 
+    private int id;
     private String name;
     private double price;
     private String url;
@@ -10,6 +11,13 @@ public class Wish {
 
     public Wish(String name) {
         this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescription() {
