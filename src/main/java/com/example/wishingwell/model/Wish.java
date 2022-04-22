@@ -9,6 +9,10 @@ public class Wish {
     private String pictureUrl;
     private String description;
 
+    public Wish(){
+
+    }
+
     public Wish(String name) {
         this.name = name;
     }
