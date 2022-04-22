@@ -70,6 +70,17 @@ public class WishRepository {
             System.out.println("Failed to update wish. Contact customer service: " + e);
         }
     }
+    public void deleteWish(int id) {
+        String query = "DELETE FROM wish WHERE wish_id=?";
+        try {
+            PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Failed to delete wish.");
+        }
+    }
 
 
 }

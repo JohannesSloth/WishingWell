@@ -61,8 +61,8 @@ public class HomeController {
 
     @GetMapping("/deletewish/{id}")
     public String deleteWish(@PathVariable int id) {
-
-        return "/redirect:/";
+        repository.deleteWish(id);
+        return "redirect:/";
     }
 
 }
