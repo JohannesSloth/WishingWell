@@ -32,8 +32,8 @@ public class HomeController {
     }
 
     @PostMapping("/addwish")
-    public String addWish(@RequestParam String name, @RequestParam double price, @RequestParam String url, @RequestParam
-            String pictureurl, @RequestParam String description) {
+    public String addWish(@RequestParam("name") String name, @RequestParam("price") double price, @RequestParam("url") String url, @RequestParam("pictureurl")
+            String pictureurl, @RequestParam("description") String description) {
         Wish wish = new Wish(name);
         wish.setPrice(price);
         wish.setUrl(url);
@@ -49,7 +49,7 @@ public class HomeController {
     }
 
     @PostMapping("/updatewish")
-    public String updateWish(@RequestParam String name, @RequestParam double price, @RequestParam String url, @RequestParam String pictureurl, @RequestParam String description) {
+    public String updateWish(@RequestParam("name") String name, @RequestParam("price") double price, @RequestParam("url") String url, @RequestParam("pictureurl") String pictureurl, @RequestParam("description") String description) {
         Wish wish = new Wish(name);
         wish.setPrice(price);
         wish.setUrl(url);
@@ -64,6 +64,8 @@ public class HomeController {
         repository.deleteWish(id);
         return "redirect:/";
     }
+
+
 
 }
 
