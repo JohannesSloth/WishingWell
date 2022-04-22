@@ -49,7 +49,7 @@ public class WishRepository {
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("ERROR: " + e);
+            System.out.println("ERROR 404: " + e);
         }
     }
 }
