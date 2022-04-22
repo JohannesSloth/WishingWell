@@ -28,11 +28,11 @@ public class HomeController {
 
     @GetMapping("/addwish")
     public String addwish() {
-        return "/addwish";
+        return "addwish";
     }
 
     @PostMapping("/addwish")
-    public String addWish(@RequestParam("name") String name, @RequestParam("price") double price, @RequestParam("url") String url, @RequestParam("pictureurl")
+    public String addwish(@RequestParam("name") String name, @RequestParam("price") double price, @RequestParam("url") String url, @RequestParam("pictureurl")
             String pictureurl, @RequestParam("description") String description) {
         Wish wish = new Wish(name);
         wish.setPrice(price);
@@ -40,7 +40,7 @@ public class HomeController {
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
         repository.addWish(wish);
-        return "redirect:/";
+        return "/";
     }
 
     @GetMapping("/update/{id}")

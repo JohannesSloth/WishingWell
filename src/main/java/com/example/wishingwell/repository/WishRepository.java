@@ -94,7 +94,6 @@ public class WishRepository {
                 prepareStatement.setInt(1,id);
                 //execute
                 ResultSet resultSet = prepareStatement.executeQuery();
-
                 while (resultSet.next()){
                     String name = resultSet.getString("name");
                     double price = resultSet.getDouble("price");
@@ -115,7 +114,4 @@ public class WishRepository {
             }
             return wish;
     }
-
-
-
 }
