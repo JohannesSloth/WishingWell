@@ -40,7 +40,7 @@ public class HomeController {
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
         repository.addWish(wish);
-        return "/";
+        return "redirect:/";
     }
 
     @GetMapping("/update/{id}")
@@ -49,13 +49,16 @@ public class HomeController {
         return "update";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateWish(@PathVariable("id") int id, @RequestParam("name") String name, @RequestParam("price") double price, @RequestParam("url") String url, @RequestParam("pictureurl") String pictureurl, @RequestParam("description") String description) {
+    @PostMapping("/update")
+    public String updateWish(@RequestParam("name") String name, @RequestParam("price") double price,
+                             @RequestParam("url") String url, @RequestParam("pictureurl") String pictureurl,
+                             @RequestParam("description") String description) {
         Wish wish = new Wish(name);
         wish.setPrice(price);
         wish.setUrl(url);
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
+        //Vi skal have en update wish metode i stedet for at lave en ny her.
         repository.addWish(wish);
         return "redirect:/";
     }

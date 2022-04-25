@@ -2,6 +2,7 @@ package com.example.wishingwell.utility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ConnectionManager {
 
@@ -15,7 +16,7 @@ public class ConnectionManager {
                         System.getenv("spring.datasource.username"),
                         System.getenv("spring.datasource.password"));
                 System.out.println("SUCCESFULLY CONNECTED TO SERVER");
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("ERROR: " + e);
             }
         }
