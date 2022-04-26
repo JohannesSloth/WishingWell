@@ -54,7 +54,6 @@ public class WishRepository {
         return wishes;
     }
 
-
     public void updateWish(Wish wish) {
         String query = "UPDATE wish SET name=?, price=?, url=?, pictureurl=?, description=? WHERE wish_id=?";
         try {
@@ -65,7 +64,7 @@ public class WishRepository {
             preparedStatement.setString(4, wish.getPictureUrl());
             preparedStatement.setString(5, wish.getDescription());
             preparedStatement.executeUpdate();
-        } catch(Exception e) {
+        } catch(SQLException e) {
             e.printStackTrace();
             System.out.println("Failed to update wish. Contact customer service: " + e);
         }
@@ -84,9 +83,8 @@ public class WishRepository {
 
     public Wish findByID(int id){
             Wish wish = new Wish();
-            //connect
             String query = "SELECT name, price, url, pictureurl, description" +
-                "FROM pokemon where wish_id = ?";
+                "FROM wish where wish_id = ?";
             try {
                 //preparestatement
                 PreparedStatement prepareStatement = ConnectionManager.connectToSql().prepareStatement(query);
@@ -109,7 +107,7 @@ public class WishRepository {
                 }
             }
             catch (SQLException sqlException){
-                System.out.println("Error in deletion of pokemon");
+                System.out.println("Error in finding item");
                 sqlException.printStackTrace();
             }
             return wish;
