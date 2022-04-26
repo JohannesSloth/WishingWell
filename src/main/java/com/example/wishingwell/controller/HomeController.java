@@ -40,7 +40,7 @@ public class HomeController {
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
         repository.addWish(wish);
-        return "/";
+        return "redirect:/";
     }
 
     @GetMapping("/update/{id}")
