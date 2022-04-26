@@ -11,10 +11,11 @@ public class ConnectionManager {
     public static Connection connectToSql() {
         if (connection == null) {
             try {
-                connection = DriverManager.getConnection(
-                        System.getenv("url"),
-                        System.getenv("user"),
-                        System.getenv("password"));
+                connection = //DriverManager.getConnection(
+                        //System.getenv("spring.datasource.url"),
+                        //System.getenv("spring.datasource.username"),
+                        //System.getenv("spring.datasource.password"))
+                        DriverManager.getConnection("url", "user", "password");
                 System.out.println("SUCCESFULLY CONNECTED TO SERVER");
             } catch (SQLException e) {
                 System.out.println("ERROR: " + e);
