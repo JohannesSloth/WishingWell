@@ -54,23 +54,6 @@ public class WishRepository {
         return wishes;
     }
 
-    public void addWish(Wish wish) {
-        String query = "INSERT INTO wish(name, price, url, pictureurl, description) VALUES (?, ?, ?, ?, ?)";
-
-        try {
-            PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
-            preparedStatement.setString(1, wish.getName());
-            preparedStatement.setDouble(2, wish.getPrice());
-            preparedStatement.setString(3, wish.getUrl());
-            preparedStatement.setString(4, wish.getPictureUrl());
-            preparedStatement.setString(5, wish.getDescription());
-            preparedStatement.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("ERROR 404: " + e);
-        }
-    }
-
     public void updateWish(Wish wish) {
         String query = "UPDATE wish SET name=?, price=?, url=?, pictureurl=?, description=? WHERE wish_id=?";
         try {
