@@ -10,7 +10,6 @@ import java.util.ArrayList;
 @Repository
 public class WishRepository {
 
-    private static Connection connection;
 
     public ArrayList<Wish> getall() {
         ArrayList<Wish> wishes = new ArrayList<>();
@@ -33,6 +32,7 @@ public class WishRepository {
                 wish.setDescription(description);
                 wishes.add(wish);
             }
+            ConnectionManager.connectToSql().close();
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("SQL Error");
@@ -67,6 +67,7 @@ public class WishRepository {
             preparedStatement.setString(4, wish.getPictureUrl());
             preparedStatement.setString(5, wish.getDescription());
             preparedStatement.executeUpdate();
+            ConnectionManager.connectToSql().close();
         } catch(SQLException e) {
             e.printStackTrace();
             System.out.println("Failed to update wish. Contact customer service: " + e);
