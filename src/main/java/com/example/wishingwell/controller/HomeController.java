@@ -49,17 +49,18 @@ public class HomeController {
         return "update";
     }
 
-    @PostMapping("/update")
-    public String updateWish(@RequestParam("name") String name, @RequestParam("price") double price,
+    @PostMapping("/update/{id}")
+    public String updateWish(@PathVariable("id") int id, @RequestParam("name") String name, @RequestParam("price") double price,
                              @RequestParam("url") String url, @RequestParam("pictureurl") String pictureurl,
                              @RequestParam("description") String description) {
         Wish wish = new Wish(name);
+        wish.setId(id);
         wish.setPrice(price);
         wish.setUrl(url);
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
         //Vi skal have en update wish metode i stedet for at lave en ny her.
-        repository.addWish(wish);
+        repository.updateWish(wish);
         return "redirect:/";
     }
 

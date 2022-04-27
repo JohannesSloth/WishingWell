@@ -15,7 +15,7 @@ public class ConnectionManager {
                         //System.getenv("spring.datasource.url"),
                         //System.getenv("spring.datasource.username"),
                         //System.getenv("spring.datasource.password"))
-                        DriverManager.getConnection("url", "user", "password");
+                        DriverManager.getConnection(System.getenv("url"), System.getenv("user"), System.getenv("password"));
                 System.out.println("SUCCESFULLY CONNECTED TO SERVER");
             } catch (SQLException e) {
                 System.out.println("ERROR: " + e);

@@ -63,6 +63,7 @@ public class WishRepository {
             preparedStatement.setString(3, wish.getUrl());
             preparedStatement.setString(4, wish.getPictureUrl());
             preparedStatement.setString(5, wish.getDescription());
+            preparedStatement.setInt(6, wish.getId());
             preparedStatement.executeUpdate();
         } catch(SQLException e) {
             e.printStackTrace();
@@ -82,17 +83,13 @@ public class WishRepository {
     }
 
     public Wish findByID(int id){
-            Wish wish = new Wish();
-            String query = "SELECT name, price, url, pictureurl, description" +
-                "FROM wish where wish_id = ?";
-            try {
-                //preparestatement
-                PreparedStatement prepareStatement = ConnectionManager.connectToSql().prepareStatement(query);
-                //Set attributer
-                prepareStatement.setInt(1,id);
-                //execute
+        Wish wish = new Wish();
+        String query = "SELECT wish_id, name, price, url, pictureurl, description FROM wish where wish_id = " + id;
+        try {
+            PreparedStatement prepareStatement = ConnectionManager.connectToSql().prepareStatement(query);
                 ResultSet resultSet = prepareStatement.executeQuery();
                 while (resultSet.next()){
+                    int idd = resultSet.getInt("wish_id");
                     String name = resultSet.getString("name");
                     double price = resultSet.getDouble("price");
                     String url = resultSet.getString("url");

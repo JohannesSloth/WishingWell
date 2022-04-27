@@ -7,17 +7,27 @@
     <title>Update</title>
 </head>
 <body>
+
+<style>
+    form
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+</style>
+
 <form method="post">
 
     <p>id: <span th:text="${wish.getId()}"></span></p>
 
     <label for="name">name: </label>
-    <input id="name" name="name" type="text" th:value="${wish.name}">
+    <input id="name" name="name" type="text" th:value="${wish.getName()}">
 
     <label for="price">price: </label>
-    <input id="price" name="speed" type="number" th:value="${wish.getPrice()}">
+    <input id="price" name="price" type="text" th:value="${wish.getPrice()}">
 
-    <label for="url"> url: </label>
+    <label for="url">url: </label>
     <input id="url" name="url" type="text" th:value="${wish.getUrl()}">
 
     <label for="pictureurl">picture url: </label>
