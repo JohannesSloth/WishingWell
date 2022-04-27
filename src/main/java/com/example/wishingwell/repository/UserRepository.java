@@ -69,7 +69,7 @@ public class UserRepository {
   }
 
   public ArrayList<Wish> showWishlist(int user_id){
-    String query = "SELECT name, price, url, pictureurl, description FROM wish WHERE user_id = ?";
+    String query = "SELECT name, price, url, pictureurl, description, wish_id FROM wish WHERE user_id = ?";
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
       PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
