@@ -73,6 +73,7 @@ public class UserRepository {
     ArrayList<Wish> wishes = new ArrayList<>();
     try {
       PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
+      preparedStatement.setInt(1,user_id);
       ResultSet resultSet = preparedStatement.executeQuery();
       while (resultSet.next()){
         String name = resultSet.getString("name");

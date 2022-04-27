@@ -40,7 +40,7 @@ public class HomeController {
         return "redirect:/";
     }
 
-    @GetMapping("/addwish")
+    @GetMapping("/addwish/{userId}")
     public String addwish() {
         return "addwish";
     }
@@ -55,7 +55,7 @@ public class HomeController {
         wish.setDescription(description);
         wish.setUserId(id);
         repository.addWish(wish);
-        return "redirect:/";
+        return "redirect:/wishlist/" + id;
     }
 
     @GetMapping("/wishlist/{id}")
