@@ -76,6 +76,7 @@ public class UserRepository {
       preparedStatement.setInt(1,user_id);
       ResultSet resultSet = preparedStatement.executeQuery();
       while (resultSet.next()){
+        int id = resultSet.getInt("wish_id");
         String name = resultSet.getString("name");
         double price = resultSet.getDouble("price");
         String url = resultSet.getString("url");
@@ -86,6 +87,7 @@ public class UserRepository {
         wish.setUrl(url);
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
+        wish.setId(id);
         wishes.add(wish);
       }
     } catch (Exception e) {

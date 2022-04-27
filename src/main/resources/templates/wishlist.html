@@ -33,6 +33,9 @@
             <td th:text="${wishes.getUrl()}"></td>
             <td th:text="${wishes.getPictureUrl()}"></td>
             <td th:text="${wishes.getDescription()}"></td>
+            <td>
+                <a class="btn btn-danger" th:href="@{'/deletewish/' + ${wishes.getId()}}" role="button" onclick="return confirm ('Are you sure you want to delete this wish?')">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

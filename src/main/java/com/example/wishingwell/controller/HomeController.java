@@ -71,7 +71,6 @@ public class HomeController {
         return "redirect:/";
     }
 
-
     @GetMapping("/update/{id}")
     public String updateWish(@PathVariable("id") int id, Model model) {
         model.addAttribute("wish", repository.findByID(id));
@@ -98,8 +97,5 @@ public class HomeController {
         repository.deleteWish(id);
         return "redirect:/";
     }
-
-
-
 }
 
