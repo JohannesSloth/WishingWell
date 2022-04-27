@@ -30,15 +30,15 @@ public class WishRepository {
         ArrayList<Wish> wishes = new ArrayList<>();
         String query = "SELECT * FROM wish";
         try {
-            PreparedStatement ps = ConnectionManager.connectToSql().prepareStatement(query);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt("wish_id");
-                String name = rs.getString("name");
-                double price = rs.getDouble("price");
-                String url = rs.getString("url");
-                String pictureurl = rs.getString("pictureurl");
-                String description = rs.getString("description");
+            PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("wish_id");
+                String name = resultSet.getString("name");
+                double price = resultSet.getDouble("price");
+                String url = resultSet.getString("url");
+                String pictureurl = resultSet.getString("pictureurl");
+                String description = resultSet.getString("description");
                 Wish wish = new Wish(name);
                 wish.setId(id);
                 wish.setPrice(price);

@@ -12,30 +12,23 @@
     <h1>WishingWell</h1>
     </div>
     <div>
-        <a class="btn btn-success text-center" th:href="@{'/addwish/'}" role="button">Add wish</a>
+        <a class="btn btn-success text-center" th:href="@{'/adduser/'}" role="button">Add user</a>
     </div>
     <table class="table table-hover">
     <thead>
     <tr>
         <th>name</th>
-        <th>price</th>
-        <th>url</th>
-        <th>pictureurl</th>
-        <th>description</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="wishes : ${wishlist}">
-        <td th:text="${wishes.getName()}"></td>
-        <td th:text="${wishes.getPrice()}"></td>
-        <td th:text="${wishes.getUrl()}"></td>
-        <td th:text="${wishes.getPictureUrl()}"></td>
-        <td th:text="${wishes.getDescription()}"></td>
-        <td>
-            <a class="btn btn-danger" th:href="@{'/deletewish/' + ${wishes.getId()}}" role="button">Delete</a>
-            <span> | </span>
-            <a class="btn btn-primary btn-sm" th:href="@{'/update/' + ${wishes.getId()}}" role="button">Update</a>
-        </td>
+    <tr th:each="users : ${userlist}">
+        <td th:text="${users.getUsername()}"></td>
+    <td>
+        <a class="btn btn-primary btn-sm" th:href="@{'/showwishlist/' + ${users.getUser_id()}}" role="button">show wishlist</a>
+    </td>
+    <td>
+        <a class="btn btn-danger" th:href="@{'/deleteuser/' + ${users.getUser_id()}}" role="button">delete user</a>
+    </td>
     </tr>
     </tbody>
 </table>

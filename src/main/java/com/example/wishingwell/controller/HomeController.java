@@ -1,6 +1,8 @@
 package com.example.wishingwell.controller;
 
+import com.example.wishingwell.model.User;
 import com.example.wishingwell.model.Wish;
+import com.example.wishingwell.repository.UserRepository;
 import com.example.wishingwell.repository.WishRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
+    UserRepository userRepository = new UserRepository();
     WishRepository repository;
 
     public HomeController(WishRepository wishRepository) {
@@ -21,10 +24,21 @@ public class HomeController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("wishlist", repository.getall());
+        model.addAttribute("userlist", userRepository.showUsers());
         return "index";
     }
 
+    @GetMapping("/adduser")
+    public String adduser() {
+        return "adduser";
+    }
+
+    @PostMapping("/adduser")
+    public String adduser(@RequestParam("name") String name){
+        User user = new User(name);
+        userRepository.addUser(user);
+        return "redirect:/";
+    }
 
     @GetMapping("/addwish")
     public String addwish() {
@@ -41,6 +55,11 @@ public class HomeController {
         wish.setDescription(description);
         repository.addWish(wish);
         return "redirect:/";
+    }
+
+    @GetMapping("/showwishlist/{id}")
+    public String showwishlist(@PathVariable("id") int id){
+    userRepository.deleteUser();
     }
 
     @GetMapping("/update/{id}")
