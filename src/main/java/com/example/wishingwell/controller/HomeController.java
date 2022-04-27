@@ -59,8 +59,14 @@ public class HomeController {
 
     @GetMapping("/showwishlist/{id}")
     public String showwishlist(@PathVariable("id") int id){
-    userRepository.deleteUser();
+    userRepository.showWishlist(id);
     }
+
+    @GetMapping("/deleteuserr/{id}")
+    public String deleteuser(@PathVariable("id") int id){
+
+    }
+
 
     @GetMapping("/update/{id}")
     public String updateWish(@PathVariable("id") int id, Model model) {
