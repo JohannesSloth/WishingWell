@@ -7,7 +7,8 @@
     <title>Update</title>
 </head>
 <body>
-
+<div class="container">
+<h1>Update pokemon</h1>
 <style>
     form
     {
@@ -16,10 +17,8 @@
         align-items: flex-start;
     }
 </style>
-
+<div class="form-group w-25">
 <form method="post">
-
-    <p>id: <span th:text="${wish.getId()}"></span></p>
 
     <label for="name">name: </label>
     <input id="name" name="name" type="text" th:value="${wish.getName()}">
@@ -39,5 +38,7 @@
     <button style="margin-top: 5px" type="submit">Submit</button>
 
 </form>
+</div>
+</div>
 </body>
 </html>
