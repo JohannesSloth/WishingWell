@@ -4,10 +4,12 @@ package com.example.wishingwell.repository;
 import com.example.wishingwell.model.User;
 import com.example.wishingwell.model.Wish;
 import com.example.wishingwell.utility.ConnectionManager;
+import org.springframework.data.relational.core.sql.SQL;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 @Repository
@@ -22,6 +24,27 @@ public class UserRepository {
     } catch (Exception e) {
       e.printStackTrace();
       System.out.println("Error in user creation");
+    }
+  }
+
+  public void deleteUser(int id) {
+    String query = "DELETE FROM user WHERE user_id = ?";
+    try {
+      PreparedStatement ps = ConnectionManager.connectToSql().prepareStatement(query);
+      ps.setInt(1, id);
+      ps.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println("Error in user deletion");
+    }
+    String wishDeleteQuery = "DELETE FROM wish WHERE user_id = ?";
+    try {
+      PreparedStatement ps2 = ConnectionManager.connectToSql().prepareStatement(wishDeleteQuery);
+      ps2.setInt(1, id);
+      ps2.executeUpdate();
+    } catch (SQLException e) {
+      e.printStackTrace();
+      System.out.println("Error in deletion of wishes related to user");
     }
   }
 

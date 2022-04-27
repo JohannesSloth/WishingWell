@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class WishRepository {
 
     public void addWish(Wish wish) {
-        String query = "INSERT INTO wish(name, price, url, pictureurl, description) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO wish(name, price, url, pictureurl, description, user_id) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
             PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
@@ -20,6 +20,7 @@ public class WishRepository {
             preparedStatement.setString(3, wish.getUrl());
             preparedStatement.setString(4, wish.getPictureUrl());
             preparedStatement.setString(5, wish.getDescription());
+            preparedStatement.setInt(6, wish.getUserId());
             preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

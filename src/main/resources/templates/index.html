@@ -16,7 +16,7 @@
     <h1>WishingWell</h1>
     </div>
     <div>
-        <a class="btn btn-success text-center" th:href="@{'/adduser/'}" role="button">Add user</a>
+        <a class="btn btn-success text-center" th:href="@{'/adduser/'}" role="button">Add User</a>
     </div>
     <table class="table table-hover">
     <thead>
@@ -28,10 +28,10 @@
     <tr th:each="users : ${userlist}">
         <td th:text="${users.getUsername()}"></td>
     <td>
-        <a class="btn btn-primary btn-sm" th:href="@{'/showwishlist/' + ${users.getUser_id()}}" role="button">show wishlist</a>
+        <a class="btn btn-primary btn-sm" th:href="@{'/wishlist/' + ${users.getUser_id()}}" role="button">show wishlist</a>
     </td>
     <td>
-        <a class="btn btn-danger" th:href="@{'/deleteuser/' + ${users.getUser_id()}}" role="button">delete user</a>
+        <a class="btn btn-danger" th:href="@{'/deleteuser/' + ${users.getUser_id()}}" role="button" onclick="return confirm ('Are you sure you want to delete this user?')">Delete user</a>
     </td>
     </tr>
     </tbody>

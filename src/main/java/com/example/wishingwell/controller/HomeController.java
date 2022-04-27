@@ -45,26 +45,30 @@ public class HomeController {
         return "addwish";
     }
 
-    @PostMapping("/addwish")
+    @PostMapping("/addwish/{userId}")
     public String addwish(@RequestParam("name") String name, @RequestParam("price") double price, @RequestParam("url") String url, @RequestParam("pictureurl")
-            String pictureurl, @RequestParam("description") String description) {
+            String pictureurl, @RequestParam("description") String description, @PathVariable ("userId") int id) {
         Wish wish = new Wish(name);
         wish.setPrice(price);
         wish.setUrl(url);
         wish.setPictureUrl(pictureurl);
         wish.setDescription(description);
+        wish.setUserId(id);
         repository.addWish(wish);
         return "redirect:/";
     }
 
-    @GetMapping("/showwishlist/{id}")
-    public String showwishlist(@PathVariable("id") int id){
-    userRepository.showWishlist(id);
+    @GetMapping("/wishlist/{id}")
+    public String wishlist(@PathVariable("id") int id, Model model){
+    model.addAttribute("showWishlist", userRepository.showWishlist(id));
+    model.addAttribute("userId", id);
+    return "wishlist";
     }
 
-    @GetMapping("/deleteuserr/{id}")
+    @GetMapping("/deleteuser/{id}")
     public String deleteuser(@PathVariable("id") int id){
-
+        userRepository.deleteUser(id);
+        return "redirect:/";
     }
 
 

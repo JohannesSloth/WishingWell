@@ -9,6 +9,16 @@ public class Wish {
     private String pictureUrl;
     private String description;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    private int userId;
+
     public Wish(){
 
     }
