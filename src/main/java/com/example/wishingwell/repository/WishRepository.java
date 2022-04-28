@@ -3,9 +3,7 @@ package com.example.wishingwell.repository;
 import com.example.wishingwell.model.Wish;
 import com.example.wishingwell.utility.ConnectionManager;
 import org.springframework.stereotype.Repository;
-
 import java.sql.*;
-import java.util.ArrayList;
 
 @Repository
 public class WishRepository {
@@ -27,33 +25,6 @@ public class WishRepository {
             System.out.println("ERROR 404: " + e);
         }
     }
-    public ArrayList<Wish> getall() {
-        ArrayList<Wish> wishes = new ArrayList<>();
-        String query = "SELECT * FROM wish";
-        try {
-            PreparedStatement preparedStatement = ConnectionManager.connectToSql().prepareStatement(query);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()) {
-                int id = resultSet.getInt("wish_id");
-                String name = resultSet.getString("name");
-                double price = resultSet.getDouble("price");
-                String url = resultSet.getString("url");
-                String pictureurl = resultSet.getString("pictureurl");
-                String description = resultSet.getString("description");
-                Wish wish = new Wish(name);
-                wish.setId(id);
-                wish.setPrice(price);
-                wish.setUrl(url);
-                wish.setPictureUrl(pictureurl);
-                wish.setDescription(description);
-                wishes.add(wish);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("SQL Error");
-        }
-        return wishes;
-    }
 
     public void updateWish(Wish wish) {
         String query = "UPDATE wish SET name=?, price=?, url=?, pictureurl=?, description=? WHERE wish_id=?";
@@ -71,6 +42,7 @@ public class WishRepository {
             System.out.println("Failed to update wish. Contact customer service: " + e);
         }
     }
+
     public void deleteWish(int id) {
         String query = "DELETE FROM wish WHERE wish_id=?";
         try {

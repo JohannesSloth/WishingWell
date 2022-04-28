@@ -22,17 +22,24 @@
             <th>Name</th>
             <th>Price</th>
             <th>URL</th>
-            <th>Picture URL</th>
             <th>Description</th>
+            <th>Picture URL</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="wishes : ${showWishlist}">
             <td th:text="${wishes.getName()}"></td>
             <td th:text="${wishes.getPrice()}"></td>
-            <td th:text="${wishes.getUrl()}"></td>
-            <td th:text="${wishes.getPictureUrl()}"></td>
+
+            <td>
+                <a th:text="${wishes.getUrl()}" th:href="@{${wishes.getUrl()}}">
+            </a>
+            </td>
+
             <td th:text="${wishes.getDescription()}"></td>
+            <td>
+                    <img class="img-fluid img-thumbnail" width="25%" th:src="@{${wishes.getPictureUrl()}}" alt="No pic with this URL">
+            </td>
             <td>
                 <a class="btn btn-danger" th:href="@{'/deletewish/' + ${wishes.getId()}}" role="button" onclick="return confirm ('Are you sure you want to delete this wish?')">Delete</a>
             </td>
